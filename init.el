@@ -94,6 +94,7 @@
 (global-set-key (kbd "<f5>") (lambda ()
                                (interactive)
                                (setq-local compilation-read-command nil)
+                               (setq-local compile-command "make -k ARCH=i386")
                                (call-interactively 'compile)))
 
 ;; setup GDB
@@ -132,3 +133,16 @@
 (setq projectile-enable-caching t)
 
 (message "Ready to play!")
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(ede-project-directories (quote ("/home/dcc/src/daniel.casimiro_ubuntu1204_pts_team/depot/branches/pts_team/all"))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+(put 'upcase-region 'disabled nil)
