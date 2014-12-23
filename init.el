@@ -73,8 +73,12 @@
 ;; “java”: The default style for java-mode (see below)
 ;; “user”: When you want to define your own style
 (setq
- c-default-style "linux" ;; set style to "linux"
+ c-default-style "stroustrup"
  )
+
+;; indentation customize:
+;; topmost-intro +
+;; topmost-intro-cont 0
 
 (global-set-key (kbd "RET") 'newline-and-indent)  ; automatically indent when press RET
 
@@ -86,6 +90,9 @@
 
 ;; use space to indent by default
 (setq-default indent-tabs-mode nil)
+
+;; enable automatic saving of the desktop when I exit Emacs
+(desktop-save-mode 1)
 
 ;; set appearance of a tab that is represented by 4 spaces
 (setq-default tab-width 4)
@@ -131,6 +138,16 @@
 (require 'projectile)
 (projectile-global-mode)
 (setq projectile-enable-caching t)
+(setq projectile-completion-system 'helm)
+(helm-projectile-on)
+
+;; Package: p4
+(require 'p4)
+
+;; Environment variables
+(setenv "JAVA_HOME"
+   "/usr/lib/jvm/default-java"
+)
 
 (message "Ready to play!")
 (custom-set-variables
@@ -138,7 +155,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(ede-project-directories (quote ("/home/dcc/src/daniel.casimiro_ubuntu1204_pts_team/depot/branches/pts_team/all"))))
+ '(ede-project-directories (quote ("/home/dcc/src/daniel.casimiro_ubuntu1204_pts_team/depot/branches/pts_team/all")))
+ '(p4-password-source "python -c \"import keyring, sys; print(keyring.get_password(*sys.argv[1:3]))\" \"$P4PORT\" \"$P4USER\""))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
