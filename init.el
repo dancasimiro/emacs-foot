@@ -61,6 +61,10 @@
 ;; hs-minor-mode for folding source code
 (add-hook 'c-mode-common-hook 'hs-minor-mode)
 
+;; jedi
+(add-hook 'python-mode-hook 'jedi:setup)
+(setq jedi:complete-on-dot t)
+
 ;; Available C style:
 ;; “gnu”: The default style for GNU projects
 ;; “k&r”: What Kernighan and Ritchie, the authors of C used in their book
@@ -123,7 +127,7 @@
 
 ;; Package: ws-butler
 (require 'ws-butler)
-(add-hook 'prog-mode-hook 'ws-butler-mode)
+(add-hook 'c-mode-common-hook 'ws-butler-mode)
 
 ;; Package: yasnippet
 (require 'yasnippet)
@@ -148,6 +152,32 @@
 (setenv "JAVA_HOME"
    "/usr/lib/jvm/default-java"
 )
+
+(setq sonos-python-base-path
+      (expand-file-name "~/daniel.casimiro_dcc_pts_team/depot/branches/pts_team/test/python")
+)
+(setenv "PYTHONPATH"
+   (concat sonos-python-base-path "/core/src:"
+           sonos-python-base-path "/tests/src:"
+           sonos-python-base-path "/server/src:"
+           sonos-python-base-path "/utilities/src")
+)
+(setenv "EXECUTION_ENVIRONMENT"
+    (expand-file-name "~/emulator-settings/testbed.json")
+)
+
+;; iPython settings
+(setq
+ python-shell-interpreter "ipython"
+ python-shell-interpreter-args ""
+ python-shell-prompt-regexp "In \\[[0-9]+\\]: "
+ python-shell-prompt-output-regexp "Out\\[[0-9]+\\]: "
+ python-shell-completion-setup-code
+   "from IPython.core.completerlib import module_completion"
+ python-shell-completion-module-string-code
+   "';'.join(module_completion('''%s'''))\n"
+ python-shell-completion-string-code
+   "';'.join(get_ipython().Completer.all_completions('''%s'''))\n")
 
 (message "Ready to play!")
 (custom-set-variables
