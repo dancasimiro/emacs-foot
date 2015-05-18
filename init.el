@@ -248,6 +248,8 @@
 (setenv "EXECUTION_ENVIRONMENT"
     (expand-file-name "~/emulator-settings/testbed.json")
 )
+(setenv "WORKSPACE"
+        (expand-file-name "~/daniel.casimiro_dcc_pts_team/depot/branches/pts_team/test/python"))
 
 ;; iPython settings
 (setq
