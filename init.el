@@ -132,6 +132,9 @@
 (projectile-global-mode)
 (setq projectile-enable-caching t)
 
+;; ess; julia
+(setq inferior-julia-program-name "/Users/daniel.casimiro/src/julia/julia")
+
 (message "Ready to play!")
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
