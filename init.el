@@ -109,7 +109,8 @@
 (defvar get-buffer-compile-command (lambda (file) (cons file 1)))
 (make-variable-buffer-local 'get-buffer-compile-command)
 
-(setq-default compile-command "make -k ARCH=i386")
+(setq compilation-ask-about-save nil)
+(setq-default compile-command "make -k -j ARCH=i386")
 
 (defun compile-dwim (&optional arg)
   "Compile Do What I Mean.
@@ -249,7 +250,16 @@
     (expand-file-name "~/emulator-settings/testbed.json")
 )
 (setenv "WORKSPACE"
-        (expand-file-name "~/daniel.casimiro_dcc_pts_team/depot/branches/pts_team/test/python"))
+        (expand-file-name "~/daniel.casimiro_dcc_pts_team/depot/branches/pts_team"))
+(setenv "PATH"
+        (concat (expand-file-name "~/.local/bin") (concat ":" (getenv "PATH"))))
+(setenv "P4USER"
+        "daniel.casimiro")
+(setenv "P4CLIENT"
+        "daniel.casimiro_dcc_pts_team")
+(setenv "P4PORT"
+        "ssl:p4p-camb.sonos.com:1666")
+;(setq exec-path (append exec-path '(expand-file-name "~/.local/bin")))
 
 ;; iPython settings
 (setq
