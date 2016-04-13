@@ -21,6 +21,7 @@
 (add-hook 'c++-mode-hook 'helm-gtags-mode)
 (add-hook 'java-mode-hook 'helm-gtags-mode)
 (add-hook 'asm-mode-hook 'helm-gtags-mode)
+(add-hook 'python-hook 'helm-gtags-mode)
 
 ;; key bindings
 (define-key helm-gtags-mode-map (kbd "M-s") 'helm-gtags-select)
