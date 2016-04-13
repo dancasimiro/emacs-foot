@@ -9,14 +9,12 @@
 
 (defconst demo-packages
   '(company
-    ggtags
     helm
     helm-gtags
     function-args
     clean-aindent-mode
     dtrt-indent
     ws-butler
-    yasnippet
     smartparens
     projectile))
 
