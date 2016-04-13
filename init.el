@@ -218,10 +218,6 @@
 (require 'ws-butler)
 (add-hook 'c-mode-common-hook 'ws-butler-mode)
 
-;; Package: yasnippet
-(require 'yasnippet)
-(yas-global-mode 1)
-
 ;; Package: smartparens
 (require 'smartparens-config)
 (show-smartparens-global-mode +1)
