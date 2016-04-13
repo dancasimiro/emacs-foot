@@ -272,7 +272,9 @@
 (setenv "WORKSPACE"
         (expand-file-name "~/daniel.casimiro_dcc_pts_team/depot/branches/pts_team"))
 (setenv "PATH"
-        (concat (expand-file-name "~/.local/bin") (concat ":" (getenv "PATH"))))
+        (concat (expand-file-name "~/.local/bin")
+                (concat ":" (concat (expand-file-name "~/.cask/bin")
+                                (concat ":" (getenv "PATH"))))))
 (setenv "P4USER"
         "daniel.casimiro")
 (setenv "P4CLIENT"
