@@ -79,6 +79,7 @@
 (setq
  c-default-style "stroustrup"
  )
+(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 
 ;; indentation customize:
 ;; topmost-intro +
