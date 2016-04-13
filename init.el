@@ -37,7 +37,6 @@
 
 (require 'setup-helm)
 (require 'setup-helm-gtags)
-;; (require 'setup-ggtags)
 (require 'setup-cedet)
 
 ;; function-args
