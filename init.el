@@ -233,6 +233,25 @@
 ;; Package: p4
 (require 'p4)
 
+;; Start an emacs daemon. This allows other programs (or me, manually)
+;; to open a file with an already running instantiation of
+;; Emacs.app. Note that this is typically accomplished by running the
+;; command "emacs --daemon" to start the emacs server, followed by
+;; subsequent "emacsclient <file>" commands to pass files to a running
+;; emacs process. For Emacs.app, the commands are
+;; "/Applications/Emacs.app/Contents/MacOS/Emacs --daemon" and
+;; "/Applications/Emacs.app/Contents/MacOS/bin/emacsclient <file>"
+;; respectively. Rather than start the server from the terminal, you
+;; can also do so with a running emacs process with the command "M-x
+;; server-start". Alternatively, you can run that command at startup,
+;; which is what I've chosen to do below. Note that another option is
+;; to have this happen at boot time on OS X. See this link for
+;; details:
+;; http://superuser.com/questions/50095/how-can-i-run-mac-osx-graphical-emacs-in-daemon-mode
+(require 'server)
+(unless (server-running-p)
+    (server-start))
+
 ;; Environment variables
 (setenv "JAVA_HOME"
    "/usr/lib/jvm/default-java"
