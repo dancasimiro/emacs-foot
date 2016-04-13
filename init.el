@@ -55,9 +55,6 @@
 ;; company-c-headers
 (add-to-list 'company-backends 'company-c-headers)
 
-;; hs-minor-mode for folding source code
-(add-hook 'c-mode-common-hook 'hs-minor-mode)
-
 ;; anaconda
 (add-hook 'python-mode-hook 'anaconda-mode)
 
@@ -182,6 +179,16 @@
                         (file-name-sans-extension file))
                 11))))
 (add-hook 'c++-mode-hook 'my-c++-mode)
+
+;; hs-minor-mode for folding source code
+(require 'hideshow)
+(add-hook 'c-mode-common-hook 'hs-minor-mode)
+
+;; customize fold-dwim
+(require 'fold-dwim)
+(global-set-key (kbd "<f7>")      'fold-dwim-toggle)
+(global-set-key (kbd "<M-f7>")    'fold-dwim-hide-all)
+(global-set-key (kbd "<S-M-f7>")  'fold-dwim-show-all)
 
 (require 'ansi-color)
 (defun colorize-compilation-buffer ()
