@@ -11,6 +11,7 @@
   '(company
     helm
     helm-gtags
+    fold-dwim
     function-args
     clean-aindent-mode
     dtrt-indent
