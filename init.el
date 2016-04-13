@@ -59,8 +59,8 @@
 (add-hook 'python-mode-hook 'anaconda-mode)
 
 ;; jedi
-(add-hook 'python-mode-hook 'jedi:setup)
-(setq jedi:complete-on-dot t)
+;(add-hook 'python-mode-hook 'jedi:setup)
+;(setq jedi:complete-on-dot t)
 
 ;; Available C style:
 ;; “gnu”: The default style for GNU projects
