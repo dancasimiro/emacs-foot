@@ -285,7 +285,7 @@
 (setenv "P4CLIENT"
         "daniel.casimiro_dcc_pts_team")
 (setenv "P4PORT"
-        "ssl:p4p-camb.sonos.com:1666")
+        "ssl:p4p-bos.sonos.com:1666")
 ;(setq exec-path (append exec-path '(expand-file-name "~/.local/bin")))
 
 ;; iPython settings
