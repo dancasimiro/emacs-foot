@@ -231,6 +231,10 @@
 (setq projectile-completion-system 'helm)
 (helm-projectile-on)
 
+;; kill unused buffers every night
+(require 'midnight)
+(midnight-delay-set 'midnight-delay "3:00am")
+
 ;; Package: p4
 (require 'p4)
 
