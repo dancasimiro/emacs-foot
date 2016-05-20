@@ -231,6 +231,10 @@
 (setq projectile-completion-system 'helm)
 (helm-projectile-on)
 
+;; kill unused buffers every night
+(require 'midnight)
+(midnight-delay-set 'midnight-delay "3:00am")
+
 ;; Package: p4
 (require 'p4)
 
@@ -282,7 +286,7 @@
 (setenv "P4CLIENT"
         "daniel.casimiro_dcc_pts_team")
 (setenv "P4PORT"
-        "ssl:p4p-camb.sonos.com:1666")
+        "ssl:p4p-bos.sonos.com:1666")
 ;(setq exec-path (append exec-path '(expand-file-name "~/.local/bin")))
 
 ;; iPython settings
