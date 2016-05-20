@@ -274,7 +274,8 @@
         (expand-file-name "~/daniel.casimiro_dcc_pts_team/depot/branches/pts_team"))
 (setenv "PATH"
         (concat (expand-file-name "~/.local/bin")
-                (concat ":" (concat (expand-file-name "~/.cask/bin")
+                (concat ":" (concat (expand-file-name "~/.cask/bin"))
+                        (concat ":" (concat (expand-file-name "/usr/local/bin"))
                                 (concat ":" (getenv "PATH"))))))
 (setenv "P4USER"
         "daniel.casimiro")
@@ -298,7 +299,14 @@
    "';'.join(get_ipython().Completer.all_completions('''%s'''))\n")
 
 ;; ess; julia
-(setq inferior-julia-program-name "/Users/daniel.casimiro/src/julia/julia")
+(setq inferior-julia-program-name "/usr/local/bin/julia")
+
+(require 'julia-shell)
+(defun my-julia-mode-hooks ()
+  (require 'julia-shell-mode))
+(add-hook 'julia-mode-hook 'my-julia-mode-hooks)
+(define-key julia-mode-map (kbd "C-c C-c") 'julia-shell-run-region-or-line)
+(define-key julia-mode-map (kbd "C-c C-s") 'julia-shell-save-and-go)
 
 (message "Ready to play!")
 (custom-set-variables
