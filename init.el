@@ -15,6 +15,8 @@
     function-args
     clean-aindent-mode
     dtrt-indent
+    org-mode
+    org-bullets
     ws-butler
     smartparens
     projectile))
@@ -234,6 +236,10 @@
 ;; kill unused buffers every night
 (require 'midnight)
 (midnight-delay-set 'midnight-delay "3:00am")
+
+;; org-bullets
+(require 'org-bullets)
+(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
 
 ;; Package: p4
 (require 'p4)
