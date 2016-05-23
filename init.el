@@ -15,7 +15,7 @@
     function-args
     clean-aindent-mode
     dtrt-indent
-    org-mode
+    org
     org-bullets
     ws-butler
     smartparens
