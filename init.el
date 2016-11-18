@@ -355,8 +355,14 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(ede-project-directories (quote ("/home/dcc/src/daniel.casimiro_ubuntu1204_pts_team/depot/branches/pts_team/all")))
- '(p4-password-source "python -c \"import keyring, sys; print(keyring.get_password(*sys.argv[1:3]))\" \"$P4PORT\" \"$P4USER\""))
+ '(ede-project-directories
+   (quote
+    ("/home/dcc/src/daniel.casimiro_ubuntu1204_pts_team/depot/branches/pts_team/all")))
+ '(p4-password-source
+   "python -c \"import keyring, sys; print(keyring.get_password(*sys.argv[1:3]))\" \"$P4PORT\" \"$P4USER\"")
+ '(package-selected-packages
+   (quote
+    (magithub yasnippet ws-butler websocket smartparens request pcap-mode p4 org-jira org-clock-convenience org-bullets markdown-toc markdown-mode+ julia-shell json-rpc json-mode helm-projectile helm-gtags ggtags function-args fold-dwim f dtrt-indent company clean-aindent-mode))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
