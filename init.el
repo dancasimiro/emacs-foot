@@ -9,6 +9,7 @@
 
 (defconst demo-packages
   '(company
+    dashboard
     helm
     helm-gtags
     fold-dwim
@@ -60,6 +61,10 @@
 
 ;; anaconda
 (add-hook 'python-mode-hook 'anaconda-mode)
+
+;; dashboard
+(require 'dashboard)
+(dashboard-setup-startup-hook)
 
 ;; jedi
 ;(add-hook 'python-mode-hook 'jedi:setup)
