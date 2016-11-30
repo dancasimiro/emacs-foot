@@ -56,6 +56,9 @@
 (define-key c-mode-map  [(control tab)] 'company-complete)
 (define-key c++-mode-map  [(control tab)] 'company-complete)
 
+;; ox-jira (export org mode to jira)
+(require 'ox-jira)
+
 ;; company-c-headers
 (add-to-list 'company-backends 'company-c-headers)
 
@@ -367,7 +370,7 @@
    "python -c \"import keyring, sys; print(keyring.get_password(*sys.argv[1:3]))\" \"$P4PORT\" \"$P4USER\"")
  '(package-selected-packages
    (quote
-    (magithub yasnippet ws-butler websocket smartparens request pcap-mode p4 org-jira org-clock-convenience org-bullets markdown-toc markdown-mode+ julia-shell json-rpc json-mode helm-projectile helm-gtags ggtags function-args fold-dwim f dtrt-indent company clean-aindent-mode))))
+    (ox-jira magithub yasnippet ws-butler websocket smartparens request pcap-mode p4 org-jira org-clock-convenience org-bullets markdown-toc markdown-mode+ julia-shell json-rpc json-mode helm-projectile helm-gtags ggtags function-args fold-dwim f dtrt-indent company clean-aindent-mode))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
