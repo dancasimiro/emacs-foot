@@ -13,7 +13,6 @@
     helm
     helm-gtags
     fold-dwim
-    function-args
     clean-aindent-mode
     dtrt-indent
     org
@@ -42,12 +41,6 @@
 (require 'setup-helm)
 (require 'setup-helm-gtags)
 (require 'setup-cedet)
-
-;; function-args
-(require 'function-args)
-(fa-config-default)
-(define-key c-mode-map  [(tab)] 'moo-complete)
-(define-key c++-mode-map  [(tab)] 'moo-complete)
 
 ;; company
 (require 'company)
