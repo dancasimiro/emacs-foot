@@ -9,9 +9,9 @@
 
 (defconst demo-packages
   '(company
-    dashboard
     helm
     helm-gtags
+    helm-projectile
     fold-dwim
     clean-aindent-mode
     dtrt-indent
@@ -52,19 +52,15 @@
 ;; ox-jira (export org mode to jira)
 (require 'ox-jira)
 
+;; ob-plantuml (render plantuml in org mode)
+(require 'ob-plantuml)
+(setq plantuml-jar-path "/home/dan/plantuml.jar")
+
 ;; company-c-headers
 (add-to-list 'company-backends 'company-c-headers)
 
 ;; anaconda
 (add-hook 'python-mode-hook 'anaconda-mode)
-
-;; dashboard
-(require 'dashboard)
-(dashboard-setup-startup-hook)
-
-;; jedi
-;(add-hook 'python-mode-hook 'jedi:setup)
-;(setq jedi:complete-on-dot t)
 
 ;; Available C style:
 ;; “gnu”: The default style for GNU projects
@@ -259,11 +255,10 @@
 (smartparens-global-mode 1)
 
 ;; Package: projejctile
-(require 'projectile)
-(projectile-global-mode)
-(setq projectile-enable-caching t)
-(setq projectile-completion-system 'helm)
-(helm-projectile-on)
+;(require 'projectile)
+;(setq projectile-enable-caching t)
+;(setq projectile-completion-system 'helm)
+;(helm-projectile-on)
 
 ;; kill unused buffers every night
 (require 'midnight)
@@ -296,24 +291,6 @@
     (server-start))
 
 ;; Environment variables
-(setenv "JAVA_HOME"
-   "/usr/lib/jvm/default-java"
-)
-
-(setq sonos-python-base-path
-      (expand-file-name "~/daniel.casimiro_dcc_pts_team/depot/branches/pts_team/test/python")
-)
-(setenv "PYTHONPATH"
-   (concat sonos-python-base-path "/core/src:"
-           sonos-python-base-path "/tests/src:"
-           sonos-python-base-path "/server/src:"
-           sonos-python-base-path "/utilities/src")
-)
-(setenv "EXECUTION_ENVIRONMENT"
-    (expand-file-name "~/emulator-settings/testbed.json")
-)
-(setenv "WORKSPACE"
-        (expand-file-name "~/daniel.casimiro_dcc_pts_team/depot/branches/pts_team"))
 (setenv "PATH"
         (concat (expand-file-name "~/.local/bin")
                 (concat ":" (concat (expand-file-name "~/.cask/bin"))
@@ -356,18 +333,12 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(ede-project-directories
-   (quote
-    ("/home/dcc/src/daniel.casimiro_ubuntu1204_pts_team/depot/branches/pts_team/all")))
+ '(org-plantuml-jar-path "/home/dan/plantuml.jar")
  '(p4-password-source
-   "python -c \"import keyring, sys; print(keyring.get_password(*sys.argv[1:3]))\" \"$P4PORT\" \"$P4USER\"")
- '(package-selected-packages
-   (quote
-    (ox-jira magithub yasnippet ws-butler websocket smartparens request pcap-mode p4 org-jira org-clock-convenience org-bullets markdown-toc markdown-mode+ julia-shell json-rpc json-mode helm-projectile helm-gtags ggtags function-args fold-dwim f dtrt-indent company clean-aindent-mode))))
+   "python -c \"import keyring, sys; print(keyring.get_password(*sys.argv[1:3]))\" \"$P4PORT\" \"$P4USER\""))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
-(put 'upcase-region 'disabled nil)
