@@ -62,6 +62,10 @@
 ;; anaconda
 (add-hook 'python-mode-hook 'anaconda-mode)
 
+;; eshell
+(add-hook 'eshell-preoutput-filter-functions
+          'ansi-color-filter-apply)
+
 ;; Available C style:
 ;; “gnu”: The default style for GNU projects
 ;; “k&r”: What Kernighan and Ritchie, the authors of C used in their book
@@ -105,7 +109,7 @@
 (make-variable-buffer-local 'get-buffer-compile-command)
 
 (setq compilation-ask-about-save nil)
-(setq-default compile-command "make -k -j ARCH=i386")
+(setq-default compile-command "make -r -k -j ARCH=amd64 BUILD_GUNIT_TESTS=1")
 
 (defun compile-dwim (&optional arg)
   "Compile Do What I Mean.
@@ -210,6 +214,7 @@
                         (file-name-sans-extension file))
                 11))))
 (add-hook 'c++-mode-hook 'my-c++-mode)
+(add-hook 'c++-mode-hook #'modern-c++-font-lock-mode)
 
 ;; hs-minor-mode for folding source code
 (require 'hideshow)
@@ -335,7 +340,10 @@
  ;; If there is more than one, they won't work right.
  '(org-plantuml-jar-path "/home/dan/plantuml.jar")
  '(p4-password-source
-   "python -c \"import keyring, sys; print(keyring.get_password(*sys.argv[1:3]))\" \"$P4PORT\" \"$P4USER\""))
+   "python -c \"import keyring, sys; print(keyring.get_password(*sys.argv[1:3]))\" \"$P4PORT\" \"$P4USER\"")
+ '(package-selected-packages
+   (quote
+    (yasnippet xcscope x509-mode ws-butler websocket w3m w3 tidy swiper strace-mode sphinx-frontend sphinx-doc soap-client smartparens smart-mode-line-powerline-theme sage-shell-mode rust-playground restclient replace-symbol redis rbt racer python-mode python-info pytest pylint pyenv-mode pydoc-info pydoc pycoverage py-test py-import-check py-gnitset py-autopep8 pug-mode project-persist playerctl plantuml-mode persistent-scratch pcache page-break-lines pacmacs ox-rst ox-jira ox-gfm overseer org-password-manager org-notebook org-jira org-bullets org-babel-eval-in-repl ob-rust nv-delete-back npm-mode mustache-mode mustache multi modern-cpp-font-lock markdown-mode makefile-executor magit-p4 magit-lfs magit-filenotify logito llvm-mode libmpdee julia-shell json-reformat jira-markup-mode jedi jade-mode inflections highlight-indentation hideshowvis helm-projectile helm-gtags gradle-mode gitignore-mode gh-md ggtags fold-dwim-org flymake-rust flycheck-rust filesets+ eww-lnum eshell-git-prompt esh-autosuggest elnode dtrt-indent dotenv-mode coverage confluence company-jedi company-c-headers company-anaconda cmake-project clean-aindent-mode cl-generic cargo bts auth-password-store anything alert))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
