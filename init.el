@@ -8,7 +8,8 @@
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 (defconst my-packages
-  '(company
+  '(bitbake
+    company
     dash
     helm
     magit
@@ -278,25 +279,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(alert anything auth-password-store bts cargo cmake-project
-           company-anaconda company-c-headers company-jedi confluence
-           coverage dotenv-mode elnode esh-autosuggest
-           eshell-git-prompt eww-lnum filesets+ flycheck-rust
-           flymake-rust ggtags gh-md gitignore-mode gradle-mode
-           hideshowvis highlight-indentation inflections jade-mode
-           jedi json-reformat libmpdee llvm-mode logito magit
-           magit-filenotify magit-lfs makefile-executor markdown-mode
-           modern-cpp-font-lock multi mustache mustache-mode npm-mode
-           nv-delete-back ob-rust org-babel-eval-in-repl org-notebook
-           org-password-manager overseer ox-gfm ox-rst pacmacs
-           page-break-lines pcache persistent-scratch playerctl
-           project-persist pug-mode py-autopep8 py-gnitset
-           py-import-check py-test pycoverage pydoc pydoc-info
-           pyenv-mode pylint pytest python-info python-mode racer rbt
-           redis replace-symbol restclient rust-playground
-           sage-shell-mode smart-mode-line-powerline-theme smartparens
-           soap-client sphinx-doc sphinx-frontend strace-mode swiper
-           tidy w3 w3m websocket ws-butler x509-mode xcscope yasnippet)))
+   '(bitbake alert anything auth-password-store bts cargo cmake-project company-anaconda company-c-headers company-jedi confluence coverage dotenv-mode elnode esh-autosuggest eshell-git-prompt eww-lnum filesets+ flycheck-rust flymake-rust ggtags gh-md gitignore-mode gradle-mode hideshowvis highlight-indentation inflections jade-mode jedi json-reformat libmpdee llvm-mode logito magit magit-filenotify magit-lfs makefile-executor markdown-mode modern-cpp-font-lock multi mustache mustache-mode npm-mode nv-delete-back ob-rust org-babel-eval-in-repl org-notebook org-password-manager overseer ox-gfm ox-rst pacmacs page-break-lines pcache persistent-scratch playerctl project-persist pug-mode py-autopep8 py-gnitset py-import-check py-test pycoverage pydoc pydoc-info pyenv-mode pylint pytest python-info python-mode racer rbt redis replace-symbol restclient rust-playground sage-shell-mode smart-mode-line-powerline-theme smartparens soap-client sphinx-doc sphinx-frontend strace-mode swiper tidy w3 w3m websocket ws-butler x509-mode xcscope yasnippet)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
