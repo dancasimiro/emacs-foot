@@ -5,7 +5,6 @@
 ;; accidentially pressed "C-x C-c"
 (setq helm-command-prefix-key "C-c h")
 
-(require 'helm-config)
 (require 'helm-eshell)
 (require 'helm-files)
 (require 'helm-grep)

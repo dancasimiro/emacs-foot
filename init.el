@@ -7,39 +7,29 @@
 
 (defalias 'yes-or-no-p 'y-or-n-p)
 
-(defconst demo-packages
+(defconst my-packages
   '(company
+    dash
     helm
-    helm-gtags
-    helm-projectile
-    fold-dwim
-    clean-aindent-mode
-    dtrt-indent
+    magit
     org
-    org-bullets
     ws-butler
-    smartparens
-    projectile))
+    smartparens))
 
 (defun install-packages ()
   "Install all required packages."
   (interactive)
   (unless package-archive-contents
     (package-refresh-contents))
-  (dolist (package demo-packages)
+  (dolist (package my-packages)
     (unless (package-installed-p package)
       (package-install package))))
 
 (install-packages)
 
-;; this variables must be set before load helm-gtags
-;; you can change to any prefix key of your choice
-(setq helm-gtags-prefix-key "\C-cg")
-
 (add-to-list 'load-path "~/.emacs.d/custom")
 
 (require 'setup-helm)
-(require 'setup-helm-gtags)
 (require 'setup-cedet)
 
 ;; company
@@ -48,13 +38,6 @@
 (delete 'company-semantic company-backends)
 (define-key c-mode-map  [(control tab)] 'company-complete)
 (define-key c++-mode-map  [(control tab)] 'company-complete)
-
-;; ox-jira (export org mode to jira)
-(require 'ox-jira)
-
-;; ob-plantuml (render plantuml in org mode)
-(require 'ob-plantuml)
-(setq plantuml-jar-path "/home/dan/plantuml.jar")
 
 ;; company-c-headers
 (add-to-list 'company-backends 'company-c-headers)
@@ -220,12 +203,6 @@
 (require 'hideshow)
 (add-hook 'c-mode-common-hook 'hs-minor-mode)
 
-;; customize fold-dwim
-(require 'fold-dwim)
-(global-set-key (kbd "<f7>")      'fold-dwim-toggle)
-(global-set-key (kbd "<M-f7>")    'fold-dwim-hide-all)
-(global-set-key (kbd "<S-M-f7>")  'fold-dwim-show-all)
-
 (require 'ansi-color)
 (defun colorize-compilation-buffer ()
   (toggle-read-only)
@@ -242,14 +219,6 @@
  gdb-show-main t
  )
 
-;; Package: clean-aindent-mode
-(require 'clean-aindent-mode)
-(add-hook 'prog-mode-hook 'clean-aindent-mode)
-
-;; Package: dtrt-indent
-(require 'dtrt-indent)
-(dtrt-indent-mode 1)
-
 ;; Package: ws-butler
 (require 'ws-butler)
 (add-hook 'c-mode-common-hook 'ws-butler-mode)
@@ -259,22 +228,9 @@
 (show-smartparens-global-mode +1)
 (smartparens-global-mode 1)
 
-;; Package: projejctile
-;(require 'projectile)
-;(setq projectile-enable-caching t)
-;(setq projectile-completion-system 'helm)
-;(helm-projectile-on)
-
 ;; kill unused buffers every night
 (require 'midnight)
 (midnight-delay-set 'midnight-delay "3:00am")
-
-;; org-bullets
-(require 'org-bullets)
-(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
-
-;; Package: p4
-(require 'p4)
 
 ;; Start an emacs daemon. This allows other programs (or me, manually)
 ;; to open a file with an already running instantiation of
@@ -301,13 +257,6 @@
                 (concat ":" (concat (expand-file-name "~/.cask/bin"))
                         (concat ":" (concat (expand-file-name "/usr/local/bin"))
                                 (concat ":" (getenv "PATH"))))))
-(setenv "P4USER"
-        "daniel.casimiro")
-(setenv "P4CLIENT"
-        "daniel.casimiro_dcc_pts_team")
-(setenv "P4PORT"
-        "ssl:p4p-bos.sonos.com:1666")
-;(setq exec-path (append exec-path '(expand-file-name "~/.local/bin")))
 
 ;; iPython settings
 (setq
@@ -322,28 +271,32 @@
  python-shell-completion-string-code
    "';'.join(get_ipython().Completer.all_completions('''%s'''))\n")
 
-;; ess; julia
-(setq inferior-julia-program-name "/usr/local/bin/julia")
-
-(require 'julia-shell)
-(defun my-julia-mode-hooks ()
-  (require 'julia-shell-mode))
-(add-hook 'julia-mode-hook 'my-julia-mode-hooks)
-(define-key julia-mode-map (kbd "C-c C-c") 'julia-shell-run-region-or-line)
-(define-key julia-mode-map (kbd "C-c C-s") 'julia-shell-save-and-go)
-
 (message "Ready to play!")
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(org-plantuml-jar-path "/home/dan/plantuml.jar")
- '(p4-password-source
-   "python -c \"import keyring, sys; print(keyring.get_password(*sys.argv[1:3]))\" \"$P4PORT\" \"$P4USER\"")
  '(package-selected-packages
-   (quote
-    (yasnippet xcscope x509-mode ws-butler websocket w3m w3 tidy swiper strace-mode sphinx-frontend sphinx-doc soap-client smartparens smart-mode-line-powerline-theme sage-shell-mode rust-playground restclient replace-symbol redis rbt racer python-mode python-info pytest pylint pyenv-mode pydoc-info pydoc pycoverage py-test py-import-check py-gnitset py-autopep8 pug-mode project-persist playerctl plantuml-mode persistent-scratch pcache page-break-lines pacmacs ox-rst ox-jira ox-gfm overseer org-password-manager org-notebook org-jira org-bullets org-babel-eval-in-repl ob-rust nv-delete-back npm-mode mustache-mode mustache multi modern-cpp-font-lock markdown-mode makefile-executor magit-p4 magit-lfs magit-filenotify logito llvm-mode libmpdee julia-shell json-reformat jira-markup-mode jedi jade-mode inflections highlight-indentation hideshowvis helm-projectile helm-gtags gradle-mode gitignore-mode gh-md ggtags fold-dwim-org flymake-rust flycheck-rust filesets+ eww-lnum eshell-git-prompt esh-autosuggest elnode dtrt-indent dotenv-mode coverage confluence company-jedi company-c-headers company-anaconda cmake-project clean-aindent-mode cl-generic cargo bts auth-password-store anything alert))))
+   '(alert anything auth-password-store bts cargo cmake-project
+           company-anaconda company-c-headers company-jedi confluence
+           coverage dotenv-mode elnode esh-autosuggest
+           eshell-git-prompt eww-lnum filesets+ flycheck-rust
+           flymake-rust ggtags gh-md gitignore-mode gradle-mode
+           hideshowvis highlight-indentation inflections jade-mode
+           jedi json-reformat libmpdee llvm-mode logito magit
+           magit-filenotify magit-lfs makefile-executor markdown-mode
+           modern-cpp-font-lock multi mustache mustache-mode npm-mode
+           nv-delete-back ob-rust org-babel-eval-in-repl org-notebook
+           org-password-manager overseer ox-gfm ox-rst pacmacs
+           page-break-lines pcache persistent-scratch playerctl
+           project-persist pug-mode py-autopep8 py-gnitset
+           py-import-check py-test pycoverage pydoc pydoc-info
+           pyenv-mode pylint pytest python-info python-mode racer rbt
+           redis replace-symbol restclient rust-playground
+           sage-shell-mode smart-mode-line-powerline-theme smartparens
+           soap-client sphinx-doc sphinx-frontend strace-mode swiper
+           tidy w3 w3m websocket ws-butler x509-mode xcscope yasnippet)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
